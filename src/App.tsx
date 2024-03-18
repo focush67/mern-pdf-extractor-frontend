@@ -7,12 +7,6 @@ import FullPDFView from "./components/others/full-pdf-viewer";
 import EditPDFPages from "./components/others/edit-pdf";
 import Home from "./pages/home";
 const App = () => {
-  // const mode = import.meta.env.MODE;
-  // if (mode === "development") {
-  //   axios.defaults.baseURL = "http://localhost:4000";
-  // } else {
-  //   axios.defaults.baseURL = "https://mern-pdf-extractor-backend.vercel.app/";
-  // }
   axios.defaults.baseURL = "http://localhost:4000";
   axios.defaults.withCredentials = true;
 

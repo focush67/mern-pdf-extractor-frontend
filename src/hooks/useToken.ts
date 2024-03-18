@@ -18,7 +18,7 @@ export const useToken = () => {
     const doesNotRequireAuthentication = unauthenticatedRoutes.includes(
       location.pathname
     );
-    console.log("Token: ", token);
+
     if (isSignedIn && doesNotRequireAuthentication) {
       console.log("Going to dashboard now: ");
       navigate("/dashboard");
