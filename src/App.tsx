@@ -12,7 +12,7 @@ const App = () => {
   } else {
     axios.defaults.baseURL = "http://localhost:4000";
   }
-  axios.defaults.withCredentials = true;
+  axios.defaults.withCredentials = false;
 
   return (
     <Router>
