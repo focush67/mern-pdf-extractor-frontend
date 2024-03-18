@@ -7,7 +7,11 @@ import FullPDFView from "./components/others/full-pdf-viewer";
 import EditPDFPages from "./components/others/edit-pdf";
 import Home from "./pages/home";
 const App = () => {
-  axios.defaults.baseURL = "http://localhost:4000";
+  if (import.meta.env.MODE === "production") {
+    axios.defaults.baseURL = "https://mern-pdf-extractor-frontend.vercel.app/";
+  } else {
+    axios.defaults.baseURL = "http://localhost:4000";
+  }
   axios.defaults.withCredentials = true;
 
   return (
