@@ -20,8 +20,10 @@ export const useToken = () => {
     );
 
     if (isSignedIn && doesNotRequireAuthentication) {
+      console.log("Going to dashboard now");
       navigate("/dashboard");
     } else if (!isSignedIn && requiresAuthentication) {
+      console.log("Going to login now");
       navigate("/login");
     }
   }, [navigate, location.pathname]);
