@@ -11,7 +11,9 @@ const App = () => {
   if (mode === "development") {
     axios.defaults.baseURL = "http://localhost:4000";
   } else {
-    axios.defaults.baseURL = import.meta.env.VITE_REACT_APP_BACKEND_URL!;
+    const backend = import.meta.env.VITE_REACT_APP_BACKEND_URL!;
+    console.log("Production Backend: ", backend);
+    axios.defaults.baseURL = backend;
   }
 
   axios.defaults.withCredentials = true;
