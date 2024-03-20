@@ -2,15 +2,17 @@ import AllPDFs from "@/components/others/allPdfs";
 import PDFUpload from "@/components/others/pdf-upload";
 import { Profile } from "@/components/others/profile-card";
 import { usePdfs } from "@/hooks/usePdfs";
-import { useToken } from "@/hooks/useToken";
-import { useUser } from "@/hooks/useUser";
+import { useUser as useCurrentUser } from "@/hooks/useUser";
+import { useUser } from "@clerk/clerk-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-  useToken();
-  const { profile } = useUser();
+  const navigate = useNavigate();
+  const { profile } = useCurrentUser();
   const [_, setReload] = useState(false);
   const { pdfs } = usePdfs();
+  const { isSignedIn } = useUser();
 
   return (
     <div className="min-h-screen bg-gray-200">
@@ -19,7 +21,7 @@ const Dashboard = () => {
           <h1 className="text-2xl font-bold mb-4">Dashboard!</h1>
         </div>
         <div className="p-8">
-          <Profile username={profile?.username!} />
+          <Profile />
         </div>
       </div>
 

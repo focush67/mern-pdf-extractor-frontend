@@ -1,7 +1,13 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { useUser } from "@clerk/clerk-react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const { isSignedIn } = useUser();
+  const navigate = useNavigate();
+  if (isSignedIn) {
+    navigate("/dashboard");
+  }
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
       <h1 className="text-3xl font-bold">Welcome to PDF Extractor</h1>

@@ -13,7 +13,11 @@ const App = () => {
   } else {
     axios.defaults.baseURL = "http://localhost:4000";
   }
-  axios.defaults.withCredentials = false;
+  axios.defaults.withCredentials = true;
+  const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY!;
+  if (!PUBLISHABLE_KEY) {
+    throw new Error("Missing Clerk Key");
+  }
 
   return (
     <Router>
@@ -24,7 +28,7 @@ const App = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/pdf/:pdfId" element={<FullPDFView />} />
         <Route path="/pdf/edit/:pdfId" element={<EditPDFPages />} />
-        <Route path="*" element={<h1>Kaha Jaara bhai</h1>} />
+        <Route path="*" element={<h1>Invalid Route</h1>} />
       </Routes>
     </Router>
   );
