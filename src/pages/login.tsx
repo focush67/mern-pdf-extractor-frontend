@@ -34,6 +34,7 @@ const LoginForm = () => {
   const onSubmit = async (values: LoginFormType) => {
     try {
       const response = await axios.post("/api/login", values);
+      console.log(response.data);
       if (response.data.status === 200) {
         toast.success("Login Successful");
         setStatus(true);
