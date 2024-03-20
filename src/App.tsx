@@ -14,10 +14,6 @@ const App = () => {
     axios.defaults.baseURL = "http://localhost:4000";
   }
   axios.defaults.withCredentials = true;
-  const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY!;
-  if (!PUBLISHABLE_KEY) {
-    throw new Error("Missing Clerk Key");
-  }
 
   return (
     <Router>
