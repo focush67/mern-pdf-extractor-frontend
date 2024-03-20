@@ -2,13 +2,17 @@ import AllPDFs from "@/components/others/allPdfs";
 import PDFUpload from "@/components/others/pdf-upload";
 import { Profile } from "@/components/others/profile-card";
 import { usePdfs } from "@/hooks/usePdfs";
+import { useToken } from "@/hooks/useToken";
 import { useUser as useCurrentUser } from "@/hooks/useUser";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Dashboard = () => {
+  useToken();
   const { profile } = useCurrentUser();
-  const [_, setReload] = useState(false);
+  const [reload, setReload] = useState(false);
   const { pdfs } = usePdfs();
+
+  useEffect(() => {}, [reload]);
 
   return (
     <div className="min-h-screen bg-gray-200">
