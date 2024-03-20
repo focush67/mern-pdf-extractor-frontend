@@ -33,6 +33,7 @@ const RegisterForm = () => {
       const response = await axios.post("/api/register", values);
       if (response.data.status === 200) {
         toast.success("User successfully registered, proceed to login");
+        localStorage.setItem("token", JSON.stringify(response.data.token));
         form.reset();
       } else if (response.data.status === 302) {
         toast.error("Please try again");

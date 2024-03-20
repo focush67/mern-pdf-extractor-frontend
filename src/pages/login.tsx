@@ -15,12 +15,10 @@ import { LoginFormType, loginSchema } from "@/validations/login";
 import axios from "axios";
 import { useToken } from "@/hooks/useToken";
 import toast from "react-hot-toast";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "lucide-react";
 
 const LoginForm = () => {
-  const [status, setStatus] = useState(false);
   const navigate = useNavigate();
   useToken();
   const form = useForm<LoginFormType>({
@@ -37,7 +35,7 @@ const LoginForm = () => {
       console.log(response.data);
       if (response.data.status === 200) {
         toast.success("Login Successful");
-        setStatus(true);
+        localStorage.setItem("token", JSON.stringify(response.data.token));
         navigate("/dashboard");
       } else {
         toast.error("Invalid Credentials");
@@ -47,10 +45,6 @@ const LoginForm = () => {
       console.error("Error occurred:", error);
     }
   };
-
-  if (status) {
-    navigate("/dashboard");
-  }
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-200">

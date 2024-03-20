@@ -6,7 +6,7 @@ export const useToken = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const token = document.cookie.split("=")[1];
+    const token = localStorage.getItem("token");
     const authenticatedRoutes = ["/dashboard"];
     const unauthenticatedRoutes = ["/login", "/register"];
 

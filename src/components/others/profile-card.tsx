@@ -8,7 +8,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { Avatar, AvatarFallback } from "../ui/avatar";
@@ -20,7 +19,7 @@ interface ProfileProps {
 export function Profile({ username }: ProfileProps) {
   const navigate = useNavigate();
   const handleLogout = async () => {
-    await axios.delete("/api/login");
+    localStorage.removeItem("token");
     toast.success("Logged Out");
     navigate("/login");
   };

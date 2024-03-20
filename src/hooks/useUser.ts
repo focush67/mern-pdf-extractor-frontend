@@ -6,8 +6,9 @@ export const useUser = () => {
 
   useEffect(() => {
     const getCurrentUser = async () => {
+      const token = localStorage.getItem("token");
       try {
-        const response = await axios.get("/api/login");
+        const response = await axios.get(`/api/login/${token}`);
         setProfile(response.data.user);
       } catch (error: any) {
         console.log("Some error in useUser hook");
