@@ -3,16 +3,12 @@ import PDFUpload from "@/components/others/pdf-upload";
 import { Profile } from "@/components/others/profile-card";
 import { usePdfs } from "@/hooks/usePdfs";
 import { useUser as useCurrentUser } from "@/hooks/useUser";
-import { useUser } from "@clerk/clerk-react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-  const navigate = useNavigate();
   const { profile } = useCurrentUser();
   const [_, setReload] = useState(false);
   const { pdfs } = usePdfs();
-  const { isSignedIn } = useUser();
 
   return (
     <div className="min-h-screen bg-gray-200">
