@@ -8,8 +8,8 @@ import EditPDFPages from "./components/others/edit-pdf";
 import Home from "./pages/home";
 const App = () => {
   if (import.meta.env.MODE === "production") {
-    axios.defaults.baseURL =
-      "https://mern-pdf-extractor-backend-1.onrender.com/";
+    const baseUrl = import.meta.env.VITE_PRODUCTION_BACKEND_URL!;
+    axios.defaults.baseURL = baseUrl;
   } else {
     axios.defaults.baseURL = "http://localhost:4000";
   }
