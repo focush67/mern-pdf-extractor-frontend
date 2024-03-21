@@ -6,7 +6,7 @@ import { ArrowLeft } from "lucide-react";
 const FullPDFView = () => {
   const params = useParams();
   const loc = useLocation();
-  const location = import.meta.env.VITE_REACT_APP_BACKEND_URL!;
+  const location = import.meta.env.VITE_PRODUCTION_BACKEND_URL!;
   const pdfFileLocation = `${location}/files/${params.pdfId}`;
   const [numPages, setNumPages] = useState<number>();
 
